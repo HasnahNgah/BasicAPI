@@ -4,7 +4,9 @@ const app = express();
 const debug = require('debug')('index');
 const chalk = require('chalk');
 const port = process.env.PORT || 3000;
+var morgan = require('morgan');
 
+app.use(morgan('combined')); // a middleware
 app.set('view engine', 'ejs');
 
 app.get('/robot', (req, res) => {
