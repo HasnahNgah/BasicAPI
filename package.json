@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "DEBUG=app nodemon index.js",
+    "start": "DEBUG=* nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ."
   },
@@ -22,7 +22,11 @@
     "ignore": [
       "node_modules/**/node_modules"
     ],
-    "delay": "2500"
+    "delay": "2500",
+    "env": {
+      "NODE_ENV":"development",
+      "PORT":4000
+    }
   },
   "devDependencies": {
     "chalk": "^4.0.0",

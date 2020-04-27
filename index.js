@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const debug = require('debug')('index');
 const chalk = require('chalk');
+const port = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
 
@@ -27,6 +28,7 @@ app.get('/campgrounds', (req, res) => {
   res.render('campgrounds', { campgrounds });
 });
 
-app.listen(3000, () => {
-  debug(`listening to a port ${chalk.yellowBright(' 3000')}`);
+app.listen(port, () => {
+  console.log(`Running on port ${chalk.yellowBright(port)}`);
+  debug(`App is listening to a port ${chalk.yellowBright(port)}`);
 });
