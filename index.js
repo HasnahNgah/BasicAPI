@@ -5,12 +5,13 @@ const debug = require('debug')('index');
 const chalk = require('chalk');
 const port = process.env.PORT || 3000;
 var morgan = require('morgan');
+var path = require('path');
 
 app.use(morgan('combined')); // a middleware
 app.set('view engine', 'ejs');
 
 app.get('/robot', (req, res) => {
-  res.sendFile(__dirname + '/robot.html', (err) => {
+  res.sendFile(path.join(__dirname, '/robot.html'), (err) => {
     if (err) {
       res.status(500).send(err);
     }
