@@ -6,6 +6,14 @@ const chalk = require('chalk');
 
 app.set('view engine', 'ejs');
 
+app.get('/robot', (req, res) => {
+  res.sendFile(__dirname + '/robot.html', (err) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
+});
+
 app.get('/', (req, res) => {
   res.render('landing');
 });
