@@ -3,12 +3,22 @@ const express = require('express');
 const app = express();
 const debug = require('debug')('index');
 const chalk = require('chalk');
-const port = process.env.PORT || 3000;
-var morgan = require('morgan');
-var path = require('path');
 
+const port = process.env.PORT || 3000;
+const morgan = require('morgan');
+const path = require('path');
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/puppies');
 app.use(morgan('combined')); // a middleware
 app.set('view engine', 'ejs');
+
+// fix user entering unknown routes
+app.use((req, res) => {
+  const err = new Error('Not Found');
+  err.status = 404;
+  res.json(err);
+});
 
 app.get('/robot', (req, res) => {
   res.sendFile(path.join(__dirname, '/robot.html'), (err) => {
