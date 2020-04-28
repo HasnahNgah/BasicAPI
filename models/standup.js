@@ -6,5 +6,6 @@ const standupSchema = new mongoose.Schema({
   project: { type: String },
   workYesterday: { type: String },
   workToday: { type: String },
-  createdOn: {type:Date, default: Date.now}
+  impediment: { type: String },
+  createdOn: { type: Date, default: Date.now },
 });
